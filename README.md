@@ -80,3 +80,27 @@ int main() {
 	return 0;
 }
 ```
+
+## DLLInjector
+
+The `DLLInjector` class provides a convenient way to inject a specified Dynamic Link Library (DLL) into a target process.
+
+* `Inject` - injects the specified DLL into the target process, returning a boolean value indicating the success or failure of the operation.
+
+Example of use
+
+```cpp
+int main() {
+	std::wstring process_name = L"example.exe";
+	std::wstring dll_path = L"C:\\Path\\to\\my.dll";
+
+	DLLInjector injector;
+	if (injector.Inject(process_name, dll_path)) {
+		std::wcout << L"Injected DLL: " << dll_path << L" into process: " << process_name << std::endl;
+	}
+	else {
+		std::wcout << L"Failed to inject DLL: " << dll_path << L" into process: " << process_name << std::endl;
+	}
+	return 0;
+}
+```
